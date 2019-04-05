@@ -1,18 +1,8 @@
 ﻿//******************************************************************************
-//
-// Copyright (c) 2017 Microsoft Corporation. All rights reserved.
-//
-// This code is licensed under the MIT License (MIT).
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-//
+// PORFTOLIO BOSS 
+// Settings section tests 
 //******************************************************************************
+
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
@@ -28,7 +18,7 @@ namespace PortfolioBossTest
     public class SettingsVerification : PortfolioBossSession
     {
         protected static WindowsElement automationEntry, appearanceEntry, databaseEntry, interactiveBrokersEntry, miscellaneousEntry;
-        protected static WindowsElement automationContent, appearanceContent, databaseContent, interactiveBrokersContent, miscellaneousContent;
+        protected static WindowsElement automationContent, appearanceContentTheme, appearanceContentScale, appearanceContentColorSel, databaseContent, interactiveBrokersContent, miscellaneousContent;
 
         [TestMethod]
         public void VerifySettingsSection()
@@ -58,21 +48,37 @@ namespace PortfolioBossTest
         [TestMethod]
         public void VerifySettingsSectionContent()
         {
-            // Get the text content for every section on the settings
-            // Find the elements and assert them, after, click on next one and continue
-            // Only content verification, actions will be done on a separate test
-            automationContent = session.FindElementByName("AUTOMATION");
-            appearanceContent = session.FindElementByName("APPEARANCE");
-            databaseContent = session.FindElementByName("DATABASE");
-            interactiveBrokersContent = session.FindElementByName("INTERACTIVE BROKERS");
-            miscellaneousContent = session.FindElementByName("MISCELLANEOUS");
+            //Access the settings section 
+            Assert.IsNotNull(settingsButton);
+            settingsButton.Click();
 
-            //Assert the contents are the expected
-            Debug.WriteLine(automationContent);
-            Debug.WriteLine(appearanceContent);
-            Debug.WriteLine(databaseContent);
-            Debug.WriteLine(interactiveBrokersContent);
-            Debug.WriteLine(miscellaneousContent);
+            // Get the text content for every section on the settings
+            automationEntry.Click();
+            automationContent = session.FindElementByAccessibilityId("NewEmailAddress");
+            
+            appearanceEntry.Click();
+            appearanceContentTheme = session.FindElementByName("Theme");
+            appearanceContentScale = session.FindElementByName("Scale");
+            appearanceContentColorSel = session.FindElementByName("#FFA4C400");
+            
+            databaseEntry.Click();
+            databaseContent = session.FindElementByName("Open database folder");
+            
+            interactiveBrokersEntry.Click();
+            interactiveBrokersContent = session.FindElementByName("Connect to IB Trader Workstation");
+            
+            miscellaneousEntry.Click();
+            miscellaneousContent = session.FindElementByAccessibilityId("ResetUI");
+            
+            //Assert the contents are not empty on any section
+            Assert.IsNotNull(miscellaneousContent);
+            Assert.IsNotNull(interactiveBrokersContent);
+            Assert.IsNotNull(databaseContent);
+            Assert.IsNotNull(interactiveBrokersContent);
+            Assert.IsNotNull(appearanceContentTheme);
+            Assert.IsNotNull(appearanceContentScale);
+            Assert.IsNotNull(appearanceContentColorSel);
+            Assert.IsNotNull(automationContent);
 
         }
 
@@ -80,9 +86,14 @@ namespace PortfolioBossTest
         public void SettingsInteractions()
         {
             // Press F5 to get Time/Date from Notepad
-            Assert.AreEqual(string.Empty, settingsButton.Text);
-            settingsButton.SendKeys(Keys.F5);
-            Assert.AreNotEqual(string.Empty, settingsButton.Text);
+            //Assert.AreEqual(string.Empty, settingsButton.Text);
+            //settingsButton.SendKeys(Keys.F5);
+
+            //Access the settings section 
+            Assert.IsNotNull(settingsButton);
+            settingsButton.Click();
+            Assert.AreNotEqual("test", "test1");
+            Debug.WriteLine("TODO");
         }
 
         [ClassInitialize]
@@ -90,7 +101,7 @@ namespace PortfolioBossTest
         {
             Setup(context);
         }
-
+        
         [ClassCleanup]
         public static void ClassCleanup()
         {
