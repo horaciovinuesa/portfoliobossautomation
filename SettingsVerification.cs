@@ -85,15 +85,14 @@ namespace PortfolioBossTest
         [TestMethod]
         public void SettingsInteractions()
         {
-            // Press F5 to get Time/Date from Notepad
-            //Assert.AreEqual(string.Empty, settingsButton.Text);
-            //settingsButton.SendKeys(Keys.F5);
-
             //Access the settings section 
             Assert.IsNotNull(settingsButton);
             settingsButton.Click();
-            Assert.AreNotEqual("test", "test1");
-            Debug.WriteLine("TODO");
+            
+            //TODO
+            //Verify entering a new email address
+            //Verify duplicating email address
+            //Verify that no more than 3 email addresses can be entered
         }
 
         [ClassInitialize]

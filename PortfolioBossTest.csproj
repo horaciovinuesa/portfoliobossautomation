@@ -78,10 +78,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="PortfolioBossSession.cs" />
-    <Compile Include="ScenarioPopupDialog.cs" />
-    <Compile Include="ScenarioMenuItem.cs" />
+    <Compile Include="PortfolioManagement.cs" />
     <Compile Include="SettingsVerification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StrategyManagement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
