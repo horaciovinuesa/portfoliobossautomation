@@ -38,6 +38,8 @@ namespace PortfolioBossTest
                 session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
 
                 // Verify that PortfolioBoss is started 
+                // Wait until the splash is dismissed
+                Thread.Sleep(TimeSpan.FromSeconds(20));
                 Assert.AreEqual("Portfolio Boss", session.Title);
 
                 // Keep track of the settings button to be used throughout the session

@@ -6,6 +6,8 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Threading;
 
 namespace PortfolioBossTest
 {
@@ -15,6 +17,7 @@ namespace PortfolioBossTest
         [TestMethod]
         public void MenuItemEdit()
         {
+            /*
             // Select Edit -> Time/Date to get Time/Date
             Assert.AreEqual(string.Empty, settingsButton.Text);
             session.FindElementByName("Edit").Click();
@@ -34,6 +37,10 @@ namespace PortfolioBossTest
 
             // Verify that the Time/Date string is duplicated
             Assert.AreEqual(timeDateString + timeDateString, settingsButton.Text);
+            */
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Assert.AreEqual("Portfolio Boss", session.Title);
         }
 
         [ClassInitialize]

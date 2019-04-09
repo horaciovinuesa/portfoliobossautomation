@@ -17,14 +17,14 @@ namespace PortfolioBossTest
     [TestClass]
     public class ScenarioPopupDialog : PortfolioBossSession
     {
-        private const string ExplorerAppId = @"C:\Windows\System32\explorer.exe";
+       /* private const string ExplorerAppId = @"C:\Windows\System32\explorer.exe";
         private const string TestFileName = "NotepadTestFile";
-        private const string TargetSaveLocation = @"%TEMP%\";
+        private const string TargetSaveLocation = @"%TEMP%\";*/
 
         [TestMethod]
         public void PopupDialogSaveFile()
         {
-            session.FindElementByName("File").Click();
+            /*session.FindElementByName("File").Click();
             session.FindElementByXPath($"//MenuItem[starts-with(@Name, \"Save As\")]").Click();
             Thread.Sleep(TimeSpan.FromSeconds(1)); // Wait for 1 second until the save dialog appears
             session.FindElementByAccessibilityId("FileNameControlHost").SendKeys(TargetSaveLocation + TestFileName);
@@ -40,7 +40,10 @@ namespace PortfolioBossTest
 
             // Verify that Notepad has saved the edited text file with the given name
             Thread.Sleep(TimeSpan.FromSeconds(1.5)); // Wait for 1.5 seconds until the window title is updated
-            Assert.IsTrue(session.Title.Contains(TestFileName));
+            Assert.IsTrue(session.Title.Contains(TestFileName));*/
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Assert.AreEqual("Portfolio Boss", session.Title);
         }
 
         [ClassInitialize]
@@ -52,6 +55,7 @@ namespace PortfolioBossTest
         [ClassCleanup]
         public static void ClassCleanup()
         {
+            /*
             // Create a Windows Explorer session to delete the saved text file above
             DesiredCapabilities appCapabilities = new DesiredCapabilities();
             appCapabilities.SetCapability("app", ExplorerAppId);
@@ -90,6 +94,7 @@ namespace PortfolioBossTest
 
             windowsExplorerSession.Quit();
             windowsExplorerSession = null;
+            */
             TearDown();
         }
     }
