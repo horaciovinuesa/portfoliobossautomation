@@ -34,11 +34,11 @@ namespace PortfolioBossTest
                 Assert.IsNotNull(session);
                 Assert.IsNotNull(session.SessionId);
 
-                // Verify that PortfolioBoss is started with untitled new file
-                Assert.AreEqual("Portfolio Boss", session.Title);
-
                 // Set implicit timeout to 20 seconds to make element search to retry every 500 ms for at most three times
                 session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
+
+                // Verify that PortfolioBoss is started 
+                Assert.AreEqual("Portfolio Boss", session.Title);
 
                 // Keep track of the settings button to be used throughout the session
                 settingsButton = session.FindElementByAccessibilityId("ShowSettingsView");
