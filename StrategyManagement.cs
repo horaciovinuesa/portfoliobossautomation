@@ -1,6 +1,7 @@
 ﻿//******************************************************************************
 // PORFTOLIO BOSS TEST SUITE
 // Strategy management
+// Tests have not been defined nor developed yet, this is a placeholder
 //******************************************************************************
 
 

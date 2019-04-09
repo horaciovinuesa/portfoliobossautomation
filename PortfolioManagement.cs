@@ -1,6 +1,7 @@
 ﻿//******************************************************************************
 // PORFTOLIO BOSS TEST SUITE
 // Portfolio management section
+// Tests have not been defined nor developed yet, this is a placeholder
 //******************************************************************************
 
 
@@ -14,7 +15,7 @@ namespace PortfolioBossTest
         [TestMethod]
         public void MenuItemEdit()
         {
-            // Select Edit -> Time/Date to get Time/Date from Notepad
+            // Select Edit -> Time/Date to get Time/Date
             Assert.AreEqual(string.Empty, settingsButton.Text);
             session.FindElementByName("Edit").Click();
             session.FindElementByXPath($"//MenuItem[starts-with(@Name, \"Time/Date\")]").Click();

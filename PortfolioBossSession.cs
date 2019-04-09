@@ -21,10 +21,10 @@ namespace PortfolioBossTest
 
         public static void Setup(TestContext context)
         {
-            // Launch a new instance of PB application
+            // Launch a new instance of PortfolioBoss application
             if (session == null)
             {
-                // Create a new session to launch Notepad application
+                // Create a new session to launch PortfolioBoss application
                 DesiredCapabilities appCapabilities = new DesiredCapabilities();
                 appCapabilities.SetCapability("app", PbAppId);
                 session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
@@ -34,10 +34,10 @@ namespace PortfolioBossTest
                 Assert.IsNotNull(session);
                 Assert.IsNotNull(session.SessionId);
 
-                // Verify that Notepad is started with untitled new file
+                // Verify that PortfolioBoss is started with untitled new file
                 Assert.AreEqual("Portfolio Boss", session.Title);
 
-                // Set implicit timeout to 1.5 seconds to make element search to retry every 500 ms for at most three times
+                // Set implicit timeout to 20 seconds to make element search to retry every 500 ms for at most three times
                 session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
 
                 // Keep track of the settings button to be used throughout the session
